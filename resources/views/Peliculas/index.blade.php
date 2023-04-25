@@ -1,5 +1,5 @@
 Listado de Peliculas
-<a href="{{ url('pet/create') }}">agregar</a>
+<a href="{{ url('peliculas/create') }}">agregar</a>
 <table>
     <thead>
         <th>#</th>
@@ -10,17 +10,18 @@ Listado de Peliculas
         <th>Actions</th>
     </thead>
     <tbody>
-        @foreach($pets as $pet)
+        @foreach($peliculas as $peli)
             <tr>
-                <td>{{ $pet->id }}</td>
-                <td>{{ $pet->Titulo }}</td>
-                <td>{{ $pet->Director }}</td>
-                
-                <form action="{{ url('/pet/'.$pet->id) }}" method="POST">
+                <td>{{ $peli->id }}</td>
+                <td>{{ $peli->titulo }}</td>
+                <td>{{ $peli->director }}</td>
+                <td>{{ $peli->año }}</td>
+                <td>{{ $peli-> genero }} </td>
+                <form action="{{ url('/peliculas/'.$peli->id) }}" method="POST">
                     @csrf
-                    {{ method_field('DELETE')}} <!--define el metodo que se necesita para eliminar -->
+                    {{ method_field('DELETE')}}
                     <td>
-                        <a href="{{ route('pet.edit', $pet->id) }}">editar  </a>
+                        <a href="{{ route('peliculas.edit', $peli->id) }}">editar  </a>
                         <input type="submit" onclick="return confirm('Desea borrar el registro?')" 
                         value="Eliminar" />
                     </td>

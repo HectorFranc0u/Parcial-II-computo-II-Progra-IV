@@ -20,4 +20,4 @@ Route::get('/', function () {
 
 
 
-Route::resource('peli', PeliculasController::class);
+Route::resource('peliculas', PeliculasController::class);

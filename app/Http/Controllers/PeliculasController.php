@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Peliculas;
-
 use Illuminate\Http\Request;
 
 class PeliculasController extends Controller
@@ -13,9 +12,9 @@ class PeliculasController extends Controller
     public function index()
     {
         //
-        $data[pelis] = Peliculas::All;
-        return view('pelis.index', $data);
-        return view('pelis.index');
+        $data[peliculas] = Peliculas::All;
+        return view('peliculas.index', $data);
+        return view('peliculas.index');
     }
 
     /**
@@ -24,7 +23,7 @@ class PeliculasController extends Controller
     public function create()
     {
         //
-        return view('pelis.create');
+        return view('peliculas.create');
     }
 
     /**
@@ -33,11 +32,12 @@ class PeliculasController extends Controller
     public function store(Request $request)
     {
         //
-         //recepcionar todos los datos
-         $pelisData = request()->except('_token');
-         Pet::insert($pelisData);
-         //return response()->json($pelisData);
-         return redirect()->route('pelis.index');
+         
+         $peliculasData = request()->except('_token');
+         
+         Peliculas::insert($peliculasData);
+         
+         return redirect()->route('peliculas.index');
     }
 
     /**
@@ -54,6 +54,8 @@ class PeliculasController extends Controller
     public function edit(string $id)
     {
         //
+        $peli=Peliculas::findOrFail($id);
+        return view('peliculas.edit', compact('peliculas'));
     }
 
     /**
@@ -62,6 +64,9 @@ class PeliculasController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $peliculasData = request()->except(['_token', '_method']);
+        Peliculas::where('id', '=', $id)->update($peliculasData);
+        return redirect('peliculas');
     }
 
     /**
@@ -70,5 +75,7 @@ class PeliculasController extends Controller
     public function destroy(string $id)
     {
         //
+        Pelicylas::destroy($id);
+        return redirect('peliculas');
     }
 }

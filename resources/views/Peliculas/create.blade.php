@@ -1,7 +1,7 @@
 Nuevo Registro de Pelicula
 
-<form action="{{ url('/pelis') }}" method="POST">
+<form action="{{ url('/peliculas') }}" method="POST">
     
     @csrf
-    @include('pelis.form')
+    @include('peliculas.show')
 </form>
