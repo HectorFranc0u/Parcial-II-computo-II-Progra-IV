@@ -12,7 +12,7 @@ class PeliculasController extends Controller
     public function index()
     {
         //
-        $data[peliculas] = Peliculas::All;
+        $data['peliculas'] = Peliculas::All();
         return view('peliculas.index', $data);
         return view('peliculas.index');
     }
@@ -55,7 +55,7 @@ class PeliculasController extends Controller
     {
         //
         $peli=Peliculas::findOrFail($id);
-        return view('peliculas.edit', compact('peliculas'));
+        return view('peliculas.edit', compact('peli'));
     }
 
     /**
@@ -75,7 +75,7 @@ class PeliculasController extends Controller
     public function destroy(string $id)
     {
         //
-        Pelicylas::destroy($id);
+        Peliculas::destroy($id);
         return redirect('peliculas');
     }
 }

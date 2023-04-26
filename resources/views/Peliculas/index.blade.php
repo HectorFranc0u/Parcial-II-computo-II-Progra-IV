@@ -15,7 +15,7 @@ Listado de Peliculas
                 <td>{{ $peli->id }}</td>
                 <td>{{ $peli->titulo }}</td>
                 <td>{{ $peli->director }}</td>
-                <td>{{ $peli->año }}</td>
+                <td>{{ $peli->año_lanzamiento }}</td>
                 <td>{{ $peli-> genero }} </td>
                 <form action="{{ url('/peliculas/'.$peli->id) }}" method="POST">
                     @csrf
